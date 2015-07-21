@@ -4,7 +4,9 @@
 //
 //  Created by yleaf on 15/7/10.
 //  Copyright (c) 2015年 yleaf. All rights reserved.
-//
+#define SCREEN_FRAME ([UIScreen mainScreen].bounds)
+#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
 #import "AppDelegate.h"
 #import "StoryList.h"
