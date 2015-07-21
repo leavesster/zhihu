@@ -10,7 +10,7 @@
         <!--RegisterVC-->
         <scene sceneID="h69-Ou-dBq">
             <objects>
-                <viewController id="Nd4-gp-L72" customClass="RegisterVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterVC" id="Nd4-gp-L72" customClass="RegisterVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8rk-SE-S8j"/>
                         <viewControllerLayoutGuide type="bottom" id="zoT-IT-Cgz"/>
@@ -68,7 +68,7 @@
         <!--知乎日报-->
         <scene sceneID="3gs-Ib-Yoq">
             <objects>
-                <tableViewController id="Nb1-EF-ArS" customClass="StoryListVC" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="StoryListVC" id="Nb1-EF-ArS" customClass="StoryListVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="27E-J8-jF6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -149,7 +149,7 @@
         <!--ContentVC-->
         <scene sceneID="OsZ-q7-wEI">
             <objects>
-                <viewController id="eDD-1b-dRr" customClass="ContentVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContentVC" id="eDD-1b-dRr" customClass="ContentVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PmF-RZ-Rp7"/>
                         <viewControllerLayoutGuide type="bottom" id="zkQ-fo-jmb"/>
@@ -285,7 +285,7 @@
         <!--Reveal View Controller-->
         <scene sceneID="bbL-eQ-P4D">
             <objects>
-                <viewController id="ZdS-YK-0AB" customClass="SWRevealViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SWR" id="ZdS-YK-0AB" customClass="SWRevealViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lgd-7w-VjV"/>
                         <viewControllerLayoutGuide type="bottom" id="7xP-Ik-Xt3"/>
@@ -307,7 +307,7 @@
         <!--MainMenu-->
         <scene sceneID="zQ5-yh-abw">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vxe-lu-618" userLabel="MainMenu" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Main" automaticallyAdjustsScrollViewInsets="NO" id="vxe-lu-618" userLabel="MainMenu" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zrU-Gk-FTH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -325,7 +325,7 @@
         <!--HomeVC-->
         <scene sceneID="oZ7-gd-vgL">
             <objects>
-                <tableViewController id="06Q-Xh-zRU" customClass="HomeVC" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HomeVC" id="06Q-Xh-zRU" customClass="HomeVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="hhj-Dm-e82">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -454,68 +454,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QY9-of-Jmf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="590" y="-613"/>
-        </scene>
-        <!--ContentVC-->
-        <scene sceneID="owA-6E-TVM">
-            <objects>
-                <viewController id="1mU-1X-BXS" customClass="ContentVC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fN6-CH-eNe"/>
-                        <viewControllerLayoutGuide type="bottom" id="OTd-hz-UQV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Rud-mf-aNw">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0AD-EZ-Vxt">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FJK-55-8jV">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem image="back" style="plain" id="naE-4Z-XDD">
-                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <action selector="backTo:" destination="1mU-1X-BXS" id="ngJ-7A-KX7"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="YF6-ui-g67"/>
-                                    <barButtonItem image="unfavorite" style="plain" id="xif-Le-MTu">
-                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <action selector="favorite:" destination="1mU-1X-BXS" id="wmj-tf-abp"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="Ik0-Cr-czm"/>
-                                    <barButtonItem image="share" id="hHc-7y-63D">
-                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <action selector="share:" destination="1mU-1X-BXS" id="SdB-uI-c6H"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="FJK-55-8jV" secondAttribute="trailing" id="9Zx-At-VEs"/>
-                            <constraint firstItem="0AD-EZ-Vxt" firstAttribute="top" secondItem="Rud-mf-aNw" secondAttribute="top" id="CY5-YS-YWf"/>
-                            <constraint firstItem="FJK-55-8jV" firstAttribute="leading" secondItem="Rud-mf-aNw" secondAttribute="leading" id="CZ6-Tx-qv0"/>
-                            <constraint firstItem="0AD-EZ-Vxt" firstAttribute="bottom" secondItem="FJK-55-8jV" secondAttribute="top" id="Gti-tx-bjL"/>
-                            <constraint firstItem="FJK-55-8jV" firstAttribute="bottom" secondItem="OTd-hz-UQV" secondAttribute="top" id="J6c-as-d8A"/>
-                            <constraint firstItem="0AD-EZ-Vxt" firstAttribute="trailing" secondItem="FJK-55-8jV" secondAttribute="trailing" id="dyw-bC-zZU"/>
-                            <constraint firstItem="0AD-EZ-Vxt" firstAttribute="leading" secondItem="FJK-55-8jV" secondAttribute="leading" id="lwY-6C-rTM"/>
-                        </constraints>
-                    </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <connections>
-                        <outlet property="webView" destination="0AD-EZ-Vxt" id="h8N-Bm-AWr"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gje-Fz-viC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2196" y="-613"/>
         </scene>
     </scenes>
     <resources>
