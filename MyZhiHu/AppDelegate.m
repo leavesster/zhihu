@@ -10,6 +10,9 @@
 #import "StoryList.h"
 #import "AFNetworking.h"
 
+#import "AFNetworkActivityIndicatorManager.h"
+
+
 #import "DataManager.h"
 
 @interface AppDelegate ()
@@ -21,6 +24,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[DataManager manager] deleteCoreData];
+    //风火轮
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = true;
     [[DataManager manager] downNetworking];
 //    [NSThread sleepForTimeInterval:2.0];
 

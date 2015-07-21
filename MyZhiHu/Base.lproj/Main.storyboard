@@ -187,6 +187,9 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="im7-21-Tst">
+                                <rect key="frame" x="290" y="268" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -194,19 +197,22 @@
                             <constraint firstItem="IMJ-P5-4IM" firstAttribute="bottom" secondItem="zkQ-fo-jmb" secondAttribute="top" id="EVI-eq-ikB"/>
                             <constraint firstItem="KZI-0P-MdC" firstAttribute="bottom" secondItem="IMJ-P5-4IM" secondAttribute="top" id="VX4-dv-567"/>
                             <constraint firstItem="KZI-0P-MdC" firstAttribute="leading" secondItem="IMJ-P5-4IM" secondAttribute="leading" id="WUN-Jr-BbX"/>
+                            <constraint firstItem="KZI-0P-MdC" firstAttribute="centerY" secondItem="im7-21-Tst" secondAttribute="centerY" id="dq8-pX-VXT"/>
+                            <constraint firstItem="KZI-0P-MdC" firstAttribute="centerX" secondItem="im7-21-Tst" secondAttribute="centerX" id="kN3-B2-dnI"/>
                             <constraint firstItem="KZI-0P-MdC" firstAttribute="top" secondItem="bnd-r4-SGB" secondAttribute="top" id="wXo-D0-0Ls"/>
                             <constraint firstItem="IMJ-P5-4IM" firstAttribute="leading" secondItem="bnd-r4-SGB" secondAttribute="leading" id="wkk-vK-H21"/>
                             <constraint firstAttribute="trailing" secondItem="IMJ-P5-4IM" secondAttribute="trailing" id="z6o-B3-0yr"/>
                         </constraints>
                     </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="indicator" destination="im7-21-Tst" id="b6x-Kp-ct8"/>
                         <outlet property="webView" destination="KZI-0P-MdC" id="XKE-8X-atf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFY-UP-tys" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2104" y="211"/>
+            <point key="canvasLocation" x="1926" y="197"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Ygc-zp-wy6">
