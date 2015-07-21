@@ -23,6 +23,7 @@
 - (IBAction)favorite:(UIBarButtonItem *)sender;
 
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 
 
 

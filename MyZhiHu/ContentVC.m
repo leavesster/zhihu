@@ -30,6 +30,7 @@
 @synthesize topView = _topView;
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     //push推送方式下，隐藏导航栏的方式
     [self.navigationController setNavigationBarHidden:YES animated:YES];
@@ -55,6 +56,7 @@
         self.imageV.contentMode = UIViewContentModeScaleAspectFill;
         self.imageV.clipsToBounds = YES;
         //文件只露出在frame的部分，不多显示多出的部分
+        [self.indicator stopAnimating];
     }
     return _imageV;
 }

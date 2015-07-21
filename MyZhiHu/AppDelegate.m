@@ -4,11 +4,16 @@
 //
 //  Created by yleaf on 15/7/10.
 //  Copyright (c) 2015年 yleaf. All rights reserved.
-//
+#define SCREEN_FRAME ([UIScreen mainScreen].bounds)
+#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
 #import "AppDelegate.h"
 #import "StoryList.h"
 #import "AFNetworking.h"
+
+#import "AFNetworkActivityIndicatorManager.h"
+
 
 #import "DataManager.h"
 
@@ -21,6 +26,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[DataManager manager] deleteCoreData];
+    //风火轮
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = true;
     [[DataManager manager] downNetworking];
 //    [NSThread sleepForTimeInterval:2.0];
 

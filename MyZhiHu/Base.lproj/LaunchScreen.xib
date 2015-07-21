@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleAspectFit" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -40,10 +40,10 @@
                 <constraint firstItem="Fca-cZ-dgP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="tPN-LU-ixe"/>
                 <constraint firstAttribute="bottom" secondItem="Fca-cZ-dgP" secondAttribute="bottom" id="xVC-cC-oLO"/>
             </constraints>
-            <point key="canvasLocation" x="548" y="455"/>
+            <point key="canvasLocation" x="378" y="428"/>
         </view>
     </objects>
     <resources>
-        <image name="1" width="640" height="640"/>
+        <image name="1" width="750" height="1334"/>
     </resources>
 </document>
