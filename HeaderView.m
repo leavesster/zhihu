@@ -39,14 +39,14 @@
         
         UIImageView *imageV1 = [[UIImageView alloc] initWithFrame:frame];
         imageV1.image = [UIImage imageNamed:@"screenshot1"];
-        imageV1.contentMode = UIViewContentModeCenter;
+        imageV1.contentMode = UIViewContentModeScaleAspectFill;//适当比例缩放，填充视图，一般是最合适的方法了。
         imageV1.clipsToBounds = YES;
         [_scrollV addSubview:imageV1];
         frame.origin.x = frame.size.width;
         
         UIImageView *imageV2 = [[UIImageView alloc] initWithFrame:frame];
         imageV2.image = [UIImage imageNamed:@"screenshot2"];
-        imageV2.contentMode = UIViewContentModeCenter;
+        imageV2.contentMode = UIViewContentModeScaleAspectFill;
         imageV2.clipsToBounds = YES;
         [_scrollV addSubview:imageV2];
         

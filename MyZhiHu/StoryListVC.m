@@ -47,6 +47,8 @@
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     self.revealViewController.rightViewRevealWidth = 100.0f;
     
+    self.tableView.rowHeight = 125.00f;
+    
     //插入滚动视图的frame，设置为tableview的头视图
     CGRect frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 250);
     HeaderView *headerView = [[HeaderView alloc] initWithFrame:frame];
@@ -213,10 +215,10 @@
     
     return cell;
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPat{
-   return 125.0f;
-}
+//固定高就直接设置好了，毕竟方法调用还是有计算成本的
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPat{
+//   return 125.0f;
+//}
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if (section == 0) {
