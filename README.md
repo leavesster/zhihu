@@ -4,7 +4,7 @@ The first demo that two week's job.
 一开始没学会（懒，轴）上传，爬过的坑，提醒自己版本管理的重要性。
 
 参考资料：
-[iOS知乎日报](https://github.com/gnou/FakeZhihuDaily) —_— 涉及大量ReactiveCocoa,所以帮助不算太大
+[iOS知乎日报](https://github.com/gnou/FakeZhihuDaily) —_— 涉及大量ReactiveCocoa,并不了解这些。
 
 [API提供](https://github.com/izzyleung/ZhihuDailyPurify/wiki/%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5-API-%E5%88%86%E6%9E%90)
 
@@ -13,12 +13,14 @@ The first demo that two week's job.
 
 2.下拉刷新以及下拉刷新，同时网络数据随之更新———— MJRefresh控件+block，API。
 3.侧滑菜单————SWRevealViewController
-4.登陆，分享界面
+4.登陆，分享窗口
 
-个人实现：
+其他实现：
 内容页下拉放大，UIScrollviewDelegate相关
+点击切换
 
 #未来：
-Cocoapod支持，由于网速等原因，数次下载失败，在下次学习的过程中，进一步使用podfile管理。
+Cocoapod支持，由于网速等原因，数次下载失败，在下次学习的过程中，进一步使用podfile依赖，不上传第三方库。
 目录整理
 夜间模式
+点击动画特效
