@@ -21,6 +21,11 @@ The first demo that two week's job.
 
 #未来：
 Cocoapod支持，由于网速等原因，数次下载失败，在下次学习的过程中，进一步使用podfile依赖，不上传第三方库。
+
 目录整理
+
 夜间模式
+
 点击动画特效
+#bug
+虽然有Core Data存储数据，但是还是需要联网载入……
