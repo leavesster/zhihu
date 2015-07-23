@@ -118,6 +118,8 @@
 #pragma mark -actions
 
 - (IBAction)backTo:(UIBarButtonItem *)sender {
+    [self.delegate changeTextColor:self.indexPath];
+    NSLog(@"delegate here");
     [self.navigationController popToRootViewControllerAnimated:YES];
     
 }

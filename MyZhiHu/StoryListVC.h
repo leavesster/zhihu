@@ -7,8 +7,9 @@
 //
 #import <CoreData/CoreData.h>
 #import <UIKit/UIKit.h>
+#import "ContentVC.h"
 
-@interface StoryListVC : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface StoryListVC : UITableViewController <NSFetchedResultsControllerDelegate,ContentDelegate>
 
 @property BOOL debug;
 

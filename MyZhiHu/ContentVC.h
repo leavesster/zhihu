@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ContentDelegate <NSObject>
+
+@optional
+- (void)changeTextColor:(NSIndexPath *)indexPath;
+
+@end
+
 
 @interface ContentVC : UIViewController
 
@@ -17,6 +24,8 @@
 @property (nonatomic, strong) NSString *htmlString;
 
 @property (nonatomic, strong) NSIndexPath *indexPath;
+
+@property (nonatomic, weak) id<ContentDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 - (IBAction)backTo:(UIBarButtonItem *)sender;

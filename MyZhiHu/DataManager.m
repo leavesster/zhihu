@@ -73,7 +73,9 @@
     NSArray *dict = responseObject[@"stories"];
     [StoryList loadStoryArray:dict withDate:dateString intoManagedObjectContext:self.managedObjectContext];
     NSError *error = nil;
-    [self.managedObjectContext save:&error];
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"not save");
+    }
 }
 
 - (void)deleteCoreData{
@@ -145,7 +147,7 @@
 }
 
 //存储context
-- (void)saveContext {
+- (void)saveContext{
     NSError *error = nil;
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
     if (managedObjectContext != nil) {
@@ -153,6 +155,7 @@
             NSLog(@"ERROR: %@", [error localizedDescription]);
             abort();
         }
+        NSLog(@"Save success");
     }
 }
 

@@ -16,6 +16,7 @@
 //- (void)downURLString:(NSString *)urlString;
 - (void)deleteCoreData;
 - (void)downPastDate:(NSString *)date;
+- (void)saveContext;
 
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;

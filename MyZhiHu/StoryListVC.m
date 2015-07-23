@@ -143,21 +143,28 @@
 
 #pragma mark -properties
 - (void)performFetch
-{NSLog(@"%s begin",__func__);
-    if (self.fetchedResultsController) {
-        if (self.fetchedResultsController.fetchRequest.predicate) {
-            if (self.debug) NSLog(@"[%@ %@] fetching %@ with predicate: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.fetchedResultsController.fetchRequest.entityName, self.fetchedResultsController.fetchRequest.predicate);
-        } else {
-            if (self.debug) NSLog(@"[%@ %@] fetching all %@ (i.e., no predicate)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.fetchedResultsController.fetchRequest.entityName);
-        }
-        NSError *error;
-        BOOL success = [self.fetchedResultsController performFetch:&error];
-        if (!success) NSLog(@"[%@ %@] performFetch: failed", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-        if (error) NSLog(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
-    } else {
-        if (self.debug) NSLog(@"[%@ %@] no NSFetchedResultsController (yet?)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    }
-    NSLog(@"%s end",__func__);
+{
+//    NSLog(@"%s begin",__func__);
+//    if (self.fetchedResultsController) {
+//        if (self.fetchedResultsController.fetchRequest.predicate) {
+//            if (self.debug) NSLog(@"[%@ %@] fetching %@ with predicate: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.fetchedResultsController.fetchRequest.entityName, self.fetchedResultsController.fetchRequest.predicate);
+//        } else {
+//            if (self.debug) NSLog(@"[%@ %@] fetching all %@ (i.e., no predicate)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.fetchedResultsController.fetchRequest.entityName);
+//        }
+//        NSError *error;
+//        BOOL success = [self.fetchedResultsController performFetch:&error];
+//        if (!success) NSLog(@"[%@ %@] performFetch: failed", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+//        if (error) NSLog(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
+//    } else {
+//        if (self.debug) NSLog(@"[%@ %@] no NSFetchedResultsController (yet?)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+//    }
+    
+    NSError *error;
+    BOOL success = [self.fetchedResultsController performFetch:&error];
+    if (!success) NSLog(@"[%@ %@] performFetch: failed", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    if (error) NSLog(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
+
+//    NSLog(@"%s end",__func__);
     [self.tableView reloadData];
 }
 
@@ -181,6 +188,7 @@
 
     return _fetchedResultsController;
 }
+
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -206,6 +214,12 @@
     
 }
 
+//- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
+//    CustomCell *cell = (CustomCell *)[tableView cellForRowAtIndexPath:indexPath];
+//    NSLog(@"high");
+//    cell.titleName.textColor = [UIColor grayColor];
+//}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
@@ -215,7 +229,8 @@
     
     return cell;
 }
-//固定高就直接设置好了，毕竟方法调用还是有计算成本的
+
+//固定高就直接设置好了，毕竟方法调用还是有计算成本的,虽然不多
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPat{
 //   return 125.0f;
 //}
@@ -225,8 +240,6 @@
         return @"今日热门";
     }else{
         NSString *dateString = [[[self.fetchedResultsController sections] objectAtIndex:section] name];
-        
-        
         return [self dateFromString:dateString];
     }
 }
@@ -288,8 +301,16 @@
     if ([segue.identifier isEqualToString:@"Content"]) {
         ContentVC *content = segue.destinationViewController;
         StoryList *cellStory = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        content.delegate = self;
+        content.indexPath = indexPath;
         content.id = cellStory.id;
     }
+}
+
+#pragma mark -delegate
+- (void)changeTextColor:(NSIndexPath *)indexPath{
+    CustomCell *cell =(CustomCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    cell.titleName.textColor = [UIColor grayColor];
 }
 
 @end
