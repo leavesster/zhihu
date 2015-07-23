@@ -149,7 +149,7 @@
         <!--ContentVC-->
         <scene sceneID="OsZ-q7-wEI">
             <objects>
-                <viewController storyboardIdentifier="ContentVC" id="eDD-1b-dRr" customClass="ContentVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContentVC" automaticallyAdjustsScrollViewInsets="NO" id="eDD-1b-dRr" customClass="ContentVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PmF-RZ-Rp7"/>
                         <viewControllerLayoutGuide type="bottom" id="zkQ-fo-jmb"/>

@@ -14,7 +14,6 @@
 
 #import "AFNetworkActivityIndicatorManager.h"
 
-
 #import "DataManager.h"
 
 @interface AppDelegate ()

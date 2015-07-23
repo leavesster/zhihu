@@ -16,7 +16,7 @@
     
     StoryList *story = nil;
     
-    //以下有代码块，直接打fetch下拉，可以快捷输入
+    //以下有代码块，直接打fetch下拉，可以快捷输入，知道的有点晚
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"StoryList" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
