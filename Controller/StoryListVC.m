@@ -203,18 +203,19 @@ sectionNameKeyPath:@"date.dateString" cacheName:nil];
 - (void)configureCell:(CustomCell*)cell atIndextPath:(NSIndexPath *)indexPath{
     
     StoryList *story = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",story.imageURL]];
     
-    if (cell) {
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",story.imageURL]];
-        [cell.titleImageView sd_setImageWithURL:url];
-        cell.titleName.text = story.title;
-        
-        if (story.isRead) {
-            cell.titleName.textColor = [UIColor grayColor];
-        }else
-            cell.titleName.textColor = [UIColor blackColor];
+    [cell.titleImageView sd_setImageWithURL:url];
+    cell.titleName.text = story.title;
+    //此处还是坑爹地方，CoreData的boolean是NSNumber，NSNumber为0，判断也为真，同一个类似坑。if(xx),当x为对象时，判断的是是否存在。
+    if ([story.isRead isEqualToNumber:@1]) {
+        cell.titleName.textColor = [UIColor grayColor];
+    }else{
+        cell.titleName.textColor = [UIColor blackColor];
     }
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
 }
 
 
@@ -308,14 +309,13 @@ sectionNameKeyPath:@"date.dateString" cacheName:nil];
         content.delegate = self;
         content.indexPath = indexPath;
         content.id = cellStory.id;
+        NSLog(@"isRead : %@",cellStory.isRead);
     }
 }
 
 #pragma mark -delegate
 - (void)changeTextColor:(NSIndexPath *)indexPath{
 
-    // CustomCell *cell =(CustomCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    // cell.titleName.textColor = [UIColor grayColor];
     [self updateStoryWith:indexPath];
 
 }
@@ -335,17 +335,18 @@ sectionNameKeyPath:@"date.dateString" cacheName:nil];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", story.id];
     [fetchRequest setPredicate:predicate];
 
-
     NSError *error = nil;
     NSArray *fetchedObjects = [self.context executeFetchRequest:fetchRequest error:&error];
-    if ([fetchedObjects count] > 0) {
+    if ([fetchedObjects count] == 1) {
         StoryList *story = [fetchedObjects lastObject];
-        NSLog(@"title = %@",story.title);
+//        NSLog(@"title = %@",story.title);
         [story setIsRead:[NSNumber numberWithBool:YES]];
         NSError *upError = nil;
         if([self.context save:&upError]){
-            NSLog(@"update faild");
+            NSLog(@"context update");
         }
+    }else{
+        NSLog(@"something wrong");
     }
 }
 

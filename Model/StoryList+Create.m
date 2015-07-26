@@ -37,8 +37,7 @@
     
     if (fetchedObjects == nil || error || [fetchedObjects count] > 1) {
         //结果数组不存在(意味提取数组的过程中发现错误，而不是提取的数组为空)，或有错误，或者数据多于1个（数据库本身就有重复，说明唯一标识不对）。三者为任意一个成立，即执行该条件语句
-        //nil表示对象不存在，0表示为空，初始化基本类型时，值是乱跳的。
-        //反正还是有点点小乱吧。
+        //nil表示对象不存在，0表示为空
         NSLog(@"Error : fetch object from DB error");
     } else if ([fetchedObjects count]) {
         //存在数据，且只有一个
