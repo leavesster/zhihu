@@ -82,7 +82,7 @@
     return _before;
 }
 
-#pragma mark -Date
+#pragma mark -Date affair
 //转化日期文字表达
 - (NSString *)dateFromString:(NSString *)dateString{
     
@@ -139,20 +139,20 @@
 #pragma mark -properties
 - (void)performFetch
 {
-    NSLog(@"%s begin",__func__);
-    if (self.fetchedResultsController) {
-        if (self.fetchedResultsController.fetchRequest.predicate) {
-            if (self.debug) NSLog(@"[%@ %@] fetching %@ with predicate: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.fetchedResultsController.fetchRequest.entityName, self.fetchedResultsController.fetchRequest.predicate);
-        } else {
-            if (self.debug) NSLog(@"[%@ %@] fetching all %@ (i.e., no predicate)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.fetchedResultsController.fetchRequest.entityName);
-        }
-        NSError *error;
-        BOOL success = [self.fetchedResultsController performFetch:&error];
-        if (!success) NSLog(@"[%@ %@] performFetch: failed", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-        if (error) NSLog(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
-    } else {
-        if (self.debug) NSLog(@"[%@ %@] no NSFetchedResultsController (yet?)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    }
+//    NSLog(@"%s begin",__func__);
+//    if (self.fetchedResultsController) {
+//        if (self.fetchedResultsController.fetchRequest.predicate) {
+//            if (self.debug) NSLog(@"[%@ %@] fetching %@ with predicate: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.fetchedResultsController.fetchRequest.entityName, self.fetchedResultsController.fetchRequest.predicate);
+//        } else {
+//            if (self.debug) NSLog(@"[%@ %@] fetching all %@ (i.e., no predicate)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.fetchedResultsController.fetchRequest.entityName);
+//        }
+//        NSError *error;
+//        BOOL success = [self.fetchedResultsController performFetch:&error];
+//        if (!success) NSLog(@"[%@ %@] performFetch: failed", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+//        if (error) NSLog(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
+//    } else {
+//        if (self.debug) NSLog(@"[%@ %@] no NSFetchedResultsController (yet?)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+//    }
     
     NSError *error;
     BOOL success = [self.fetchedResultsController performFetch:&error];
@@ -160,7 +160,7 @@
     if (error) NSLog(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
 
 //    NSLog(@"%s end",__func__);
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController{
@@ -173,12 +173,14 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"StoryList" inManagedObjectContext:self.context];
     [fetchRequest setEntity:entity];
+
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"gaPrefix" ascending:NO];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
     [fetchRequest setFetchBatchSize:20];
 
     NSFetchedResultsController *theFetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest                                                                                                 managedObjectContext:self.context
 sectionNameKeyPath:@"date.dateString" cacheName:nil];
+    //取出的分列是怎么做到排序的？date.dateString
     
     self.fetchedResultsController = theFetchedResultsController;
     _fetchedResultsController.delegate = self;
@@ -197,18 +199,22 @@ sectionNameKeyPath:@"date.dateString" cacheName:nil];
     return [sectionInfo numberOfObjects];
 }
 
+
 - (void)configureCell:(CustomCell*)cell atIndextPath:(NSIndexPath *)indexPath{
     
-    StoryList *story = [_fetchedResultsController objectAtIndexPath:indexPath];
+    StoryList *story = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     if (cell) {
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",story.imageURL]];
         [cell.titleImageView sd_setImageWithURL:url];
         cell.titleName.text = story.title;
-        //禁止高亮
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        if (story.isRead) {
+            cell.titleName.textColor = [UIColor grayColor];
+        }else
+            cell.titleName.textColor = [UIColor blackColor];
     }
-    
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 
@@ -307,8 +313,40 @@ sectionNameKeyPath:@"date.dateString" cacheName:nil];
 
 #pragma mark -delegate
 - (void)changeTextColor:(NSIndexPath *)indexPath{
+
     // CustomCell *cell =(CustomCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     // cell.titleName.textColor = [UIColor grayColor];
+    [self updateStoryWith:indexPath];
+
+}
+
+
+//记录已读功能
+//根据给的id，取出数据,更改属性，然后在使用context save ，保存，在cell for indexPath里面，根据属性选择字体颜色，防止复用时，把这个属性带入。
+#pragma mark -Updatedata
+- (void)updateStoryWith:(NSIndexPath *)indexPath{
+    
+    StoryList *story = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"StoryList" inManagedObjectContext:self.context];
+    [fetchRequest setEntity:entity];
+    // Specify criteria for filtering which objects to fetch
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", story.id];
+    [fetchRequest setPredicate:predicate];
+
+
+    NSError *error = nil;
+    NSArray *fetchedObjects = [self.context executeFetchRequest:fetchRequest error:&error];
+    if ([fetchedObjects count] > 0) {
+        StoryList *story = [fetchedObjects lastObject];
+        NSLog(@"title = %@",story.title);
+        [story setIsRead:[NSNumber numberWithBool:YES]];
+        NSError *upError = nil;
+        if([self.context save:&upError]){
+            NSLog(@"update faild");
+        }
+    }
 }
 
 @end
