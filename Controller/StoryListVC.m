@@ -307,8 +307,8 @@ sectionNameKeyPath:@"date.dateString" cacheName:nil];
 
 #pragma mark -delegate
 - (void)changeTextColor:(NSIndexPath *)indexPath{
-    CustomCell *cell =(CustomCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    cell.titleName.textColor = [UIColor grayColor];
+    // CustomCell *cell =(CustomCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    // cell.titleName.textColor = [UIColor grayColor];
 }
 
 @end
