@@ -24,7 +24,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[DataManager manager] deleteCoreData];
     //风火轮
     [AFNetworkActivityIndicatorManager sharedManager].enabled = true;
     [[DataManager manager] downNetworking];

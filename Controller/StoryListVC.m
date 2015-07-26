@@ -63,9 +63,6 @@
         [tableView.header endRefreshing];
     }];
     
-    
-//    self.before = @"20150721";
-    
     //上拉刷新
     tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [[DataManager manager]downPastDate:self.before];
@@ -75,7 +72,6 @@
 }
 
 #pragma mark -today
-
 - (NSString *)before{
     if (!_before) {
         NSDate *date = [NSDate date];
@@ -86,16 +82,15 @@
     return _before;
 }
 
-
 #pragma mark -Date
-
 //转化日期文字表达
 - (NSString *)dateFromString:(NSString *)dateString{
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+
     [dateFormatter setDateFormat: @"yyyyMMdd"];
     NSDate *destDate= [dateFormatter dateFromString:dateString];
-    //NSDate转化为nsstring
+
     [dateFormatter setDateFormat:@"yy年MM月dd日"];
     NSString *date = [dateFormatter stringFromDate:destDate];
 
@@ -144,20 +139,20 @@
 #pragma mark -properties
 - (void)performFetch
 {
-//    NSLog(@"%s begin",__func__);
-//    if (self.fetchedResultsController) {
-//        if (self.fetchedResultsController.fetchRequest.predicate) {
-//            if (self.debug) NSLog(@"[%@ %@] fetching %@ with predicate: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.fetchedResultsController.fetchRequest.entityName, self.fetchedResultsController.fetchRequest.predicate);
-//        } else {
-//            if (self.debug) NSLog(@"[%@ %@] fetching all %@ (i.e., no predicate)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.fetchedResultsController.fetchRequest.entityName);
-//        }
-//        NSError *error;
-//        BOOL success = [self.fetchedResultsController performFetch:&error];
-//        if (!success) NSLog(@"[%@ %@] performFetch: failed", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-//        if (error) NSLog(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
-//    } else {
-//        if (self.debug) NSLog(@"[%@ %@] no NSFetchedResultsController (yet?)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-//    }
+    NSLog(@"%s begin",__func__);
+    if (self.fetchedResultsController) {
+        if (self.fetchedResultsController.fetchRequest.predicate) {
+            if (self.debug) NSLog(@"[%@ %@] fetching %@ with predicate: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.fetchedResultsController.fetchRequest.entityName, self.fetchedResultsController.fetchRequest.predicate);
+        } else {
+            if (self.debug) NSLog(@"[%@ %@] fetching all %@ (i.e., no predicate)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.fetchedResultsController.fetchRequest.entityName);
+        }
+        NSError *error;
+        BOOL success = [self.fetchedResultsController performFetch:&error];
+        if (!success) NSLog(@"[%@ %@] performFetch: failed", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+        if (error) NSLog(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
+    } else {
+        if (self.debug) NSLog(@"[%@ %@] no NSFetchedResultsController (yet?)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    }
     
     NSError *error;
     BOOL success = [self.fetchedResultsController performFetch:&error];
@@ -182,7 +177,9 @@
     [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
     [fetchRequest setFetchBatchSize:20];
 
-    NSFetchedResultsController *theFetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest          managedObjectContext:self.context sectionNameKeyPath:@"date.dateString" cacheName:nil];
+    NSFetchedResultsController *theFetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest                                                                                                 managedObjectContext:self.context
+sectionNameKeyPath:@"date.dateString" cacheName:nil];
+    
     self.fetchedResultsController = theFetchedResultsController;
     _fetchedResultsController.delegate = self;
 
@@ -214,12 +211,6 @@
     
 }
 
-//- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
-//    CustomCell *cell = (CustomCell *)[tableView cellForRowAtIndexPath:indexPath];
-//    NSLog(@"high");
-//    cell.titleName.textColor = [UIColor grayColor];
-//}
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
@@ -236,12 +227,19 @@
 //}
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
+    
+    NSString *dateString = [[[self.fetchedResultsController sections] objectAtIndex:section] name];
+    
+    NSDate *today = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter  alloc] init];
+    [dateFormatter setDateFormat:@"yyyyMMdd"];
+    NSString *todayString = [dateFormatter stringFromDate:today];
+    if ([dateString isEqualToString:todayString]) {
         return @"今日热门";
-    }else{
-        NSString *dateString = [[[self.fetchedResultsController sections] objectAtIndex:section] name];
-        return [self dateFromString:dateString];
     }
+    
+    return [self dateFromString:dateString];
+//    }
 }
 
 //当self.fetchedResultsController发生变化时，更新表格，先开放更新，然后根据不同的变化，进行不同的动作。

@@ -14,7 +14,6 @@
 		398CF6111B63FAF1000B73FE /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 398CF6001B63FAF1000B73FE /* DataManager.m */; };
 		398CF6121B63FAF1000B73FE /* Date+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 398CF6021B63FAF1000B73FE /* Date+String.m */; };
 		398CF6131B63FAF1000B73FE /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 398CF6041B63FAF1000B73FE /* Date.m */; };
-		398CF6141B63FAF1000B73FE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 398CF6051B63FAF1000B73FE /* Model.xcdatamodeld */; };
 		398CF6151B63FAF1000B73FE /* MyZhiHu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 398CF6071B63FAF1000B73FE /* MyZhiHu.xcdatamodeld */; };
 		398CF6161B63FAF1000B73FE /* Story+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 398CF60A1B63FAF1000B73FE /* Story+Create.m */; };
 		398CF6171B63FAF1000B73FE /* Story.m in Sources */ = {isa = PBXBuildFile; fileRef = 398CF60C1B63FAF1000B73FE /* Story.m */; };
@@ -109,7 +108,6 @@
 		398CF6021B63FAF1000B73FE /* Date+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Date+String.m"; sourceTree = "<group>"; };
 		398CF6031B63FAF1000B73FE /* Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Date.h; sourceTree = "<group>"; };
 		398CF6041B63FAF1000B73FE /* Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Date.m; sourceTree = "<group>"; };
-		398CF6061B63FAF1000B73FE /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		398CF6081B63FAF1000B73FE /* MyZhiHu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyZhiHu.xcdatamodel; sourceTree = "<group>"; };
 		398CF6091B63FAF1000B73FE /* Story+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Story+Create.h"; sourceTree = "<group>"; };
 		398CF60A1B63FAF1000B73FE /* Story+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Story+Create.m"; sourceTree = "<group>"; };
@@ -288,7 +286,6 @@
 				398CF6021B63FAF1000B73FE /* Date+String.m */,
 				398CF6031B63FAF1000B73FE /* Date.h */,
 				398CF6041B63FAF1000B73FE /* Date.m */,
-				398CF6051B63FAF1000B73FE /* Model.xcdatamodeld */,
 				398CF6071B63FAF1000B73FE /* MyZhiHu.xcdatamodeld */,
 				398CF6091B63FAF1000B73FE /* Story+Create.h */,
 				398CF60A1B63FAF1000B73FE /* Story+Create.m */,
@@ -735,7 +732,6 @@
 				39B3A6D11B5E466200F7BCAA /* MJRefreshBackNormalFooter.m in Sources */,
 				39B3A6ED1B5E7F4E00F7BCAA /* AFNetworkActivityIndicatorManager.m in Sources */,
 				39B3A58B1B5E45D400F7BCAA /* UIImage+GIF.m in Sources */,
-				398CF6141B63FAF1000B73FE /* Model.xcdatamodeld in Sources */,
 				39B3A6D31B5E466200F7BCAA /* MJRefreshGifHeader.m in Sources */,
 				39B3A6D71B5E466200F7BCAA /* MJRefreshConst.m in Sources */,
 				39B3A6D81B5E466200F7BCAA /* UIScrollView+MJExtension.m in Sources */,
@@ -953,16 +949,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		398CF6051B63FAF1000B73FE /* Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				398CF6061B63FAF1000B73FE /* Model.xcdatamodel */,
-			);
-			currentVersion = 398CF6061B63FAF1000B73FE /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		398CF6071B63FAF1000B73FE /* MyZhiHu.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

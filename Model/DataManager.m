@@ -51,15 +51,6 @@
     }];
 }
 
-//- (void)downURLString:(NSString *)urlString {
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        [self manageWebData:responseObject];
-//        NSLog(@"down web success");
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"%@",[error localizedDescription]);
-//    }];
-//}
 
 - (void)manageWebData:(id)responseObject{
     [Story newStory:responseObject inManagedObjectContext:self.managedObjectContext];
