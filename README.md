@@ -29,6 +29,6 @@ UITableView+NSFetchedResultsController————stanford open class
 #未来：
 Cocoapod支持，由于网速等原因，数次下载失败，在下次学习的过程中，进一步使用podfile依赖，不上传第三方库。
 
-·目录整理
+·~~目录整理~~，完成
 
 ·侧滑栏：夜间模式，点击动画特效
