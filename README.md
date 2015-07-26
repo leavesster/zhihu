@@ -17,7 +17,8 @@ UITableView+NSFetchedResultsController————stanford open class
 (https://github.com/izzyleung/ZhihuDailyPurify/wiki/%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5-API-%E5%88%86%E6%9E%90)
 
 #功能以及界面
-1. 保存数据（暂限首页列表）以及载入时自动刷新———— 由于当日JSON地址固定，所以暂时必须先开网络下载首条，保存功能不完善。 NSFetchedResultsController，从开始使用类转化JSON，到单纯CoreData，再到最后配合NSFetchedResultsController，花了很大一部分时间在这个上面。
+1. 保存数据（暂限首页列表）以及载入时自动刷新———— ~~由于当日JSON地址固定，所以暂时必须先开网络下载首条，保存功能不完善。~~ bug，每次启动调用了删除CoreData方法，已修复。
+2. 。 NSFetchedResultsController，从开始使用类转化JSON，到单纯CoreData，再到最后配合NSFetchedResultsController，花了很大一部分时间在这个上面。
 2. 下拉刷新以及下拉刷新，同时网络数据随之更新———— MJRefresh控件+block，API。
 3. 侧滑菜单————SWRevealViewController
 4. 登陆，分享窗口
