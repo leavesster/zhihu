@@ -14,13 +14,13 @@
         <attribute name="gaPrefix" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isRead" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isRead" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="date" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Date" inverseName="lists" inverseEntity="Date" syncable="YES"/>
     </entity>
     <elements>
         <element name="Date" positionX="115" positionY="9" width="128" height="73"/>
-        <element name="StoryList" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="Story" positionX="-272" positionY="81" width="128" height="43"/>
+        <element name="StoryList" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>
