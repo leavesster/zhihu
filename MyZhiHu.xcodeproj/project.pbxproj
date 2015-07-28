@@ -23,6 +23,7 @@
 		398CF6261B63FB2B000B73FE /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 398CF6201B63FB2B000B73FE /* CustomCell.m */; };
 		398CF6271B63FB2B000B73FE /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 398CF6221B63FB2B000B73FE /* HeaderView.m */; };
 		398CF6281B63FB2B000B73FE /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 398CF6241B63FB2B000B73FE /* HomeVC.m */; };
+		3990748C1B67C98000D31ABE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3990748B1B67C98000D31ABE /* LaunchScreen.xib */; };
 		39B3A4FB1B5E45CB00F7BCAA /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B3A4621B5E45CA00F7BCAA /* AFHTTPRequestOperation.m */; };
 		39B3A4FC1B5E45CB00F7BCAA /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B3A4641B5E45CA00F7BCAA /* AFHTTPRequestOperationManager.m */; };
 		39B3A4FD1B5E45CB00F7BCAA /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B3A4661B5E45CA00F7BCAA /* AFHTTPSessionManager.m */; };
@@ -125,6 +126,7 @@
 		398CF6221B63FB2B000B73FE /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		398CF6231B63FB2B000B73FE /* HomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVC.h; sourceTree = "<group>"; };
 		398CF6241B63FB2B000B73FE /* HomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeVC.m; sourceTree = "<group>"; };
+		3990748B1B67C98000D31ABE /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = ../LaunchScreen.xib; sourceTree = "<group>"; };
 		39B3A4611B5E45CA00F7BCAA /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		39B3A4621B5E45CA00F7BCAA /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		39B3A4631B5E45CA00F7BCAA /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -544,6 +546,7 @@
 			isa = PBXGroup;
 			children = (
 				39D0F02D1B4F21E2006D1806 /* Main.storyboard */,
+				3990748B1B67C98000D31ABE /* LaunchScreen.xib */,
 				39D0F0301B4F21E2006D1806 /* Images.xcassets */,
 				39D0F0201B4F21E2006D1806 /* Supporting Files */,
 			);
@@ -658,6 +661,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3990748C1B67C98000D31ABE /* LaunchScreen.xib in Resources */,
 				39D0F02F1B4F21E2006D1806 /* Main.storyboard in Resources */,
 				39B3A5801B5E45D400F7BCAA /* LICENSE in Resources */,
 				39D0F0311B4F21E2006D1806 /* Images.xcassets in Resources */,

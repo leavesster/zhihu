@@ -90,6 +90,7 @@
             [self dismissViewControllerAnimated:YES completion:^{
                 NSLog(@"quit");
             }];
+            break;
         default:
             break;
     }

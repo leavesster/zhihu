@@ -14,9 +14,14 @@
 
 #import "AFNetworkActivityIndicatorManager.h"
 
+#import "UIImageView+WebCache.h"
+#import "AFNetworking.h"
+
 #import "DataManager.h"
 
 @interface AppDelegate ()
+@property (nonatomic, strong) UIView *launchView;
+@property (nonatomic, strong) NSString *string;
 
 @end
 
@@ -27,9 +32,39 @@
     //风火轮
     [AFNetworkActivityIndicatorManager sharedManager].enabled = true;
     [[DataManager manager] downNetworking];
+    [self.window makeKeyAndVisible];
+    
+    self.launchView = [[[NSBundle mainBundle] loadNibNamed:@"LaunchScreen" owner:nil options:nil] firstObject];
+    self.launchView.frame = self.window.frame;
+    NSString *url= @"http://news-at.zhihu.com/api/4/start-image/1080*1776";
+    UIImageView *imageV = [[UIImageView alloc] init];
+    imageV.frame = self.window.frame;
+//    [imageV sd_setImageWithURL:[NSURL URLWithString:url]];
+    
+    [self.launchView addSubview:imageV];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *string = responseObject[@"img"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [imageV sd_setImageWithURL:[NSURL URLWithString:string]];
+        });
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
+    [self.window addSubview:self.launchView];
+    [self.window bringSubviewToFront:self.launchView];
+    
+    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(removeLaunch) userInfo:nil repeats:NO];
+
 //    [NSThread sleepForTimeInterval:2.0];
 
     return YES;
+}
+
+- (void)removeLaunch{
+    [self.launchView removeFromSuperview];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

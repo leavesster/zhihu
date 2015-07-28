@@ -40,6 +40,8 @@
         //nil表示对象不存在，0表示为空
         NSLog(@"Error : fetch object from DB error");
     } else if ([fetchedObjects count]) {
+//        if ([dictionary[@"type"] isEqualToNumber:@1])
+//            [context deleteObject:story];
         //存在数据，且只有一个
 //        NSLog(@"存在数据");
         //数据存在，直接返回,context的内容没有变化
