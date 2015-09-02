@@ -4,19 +4,12 @@
 //
 //  Created by yleaf on 15/7/10.
 //  Copyright (c) 2015年 yleaf. All rights reserved.
-#define SCREEN_FRAME ([UIScreen mainScreen].bounds)
-#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
-#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
 #import "AppDelegate.h"
 #import "StoryList.h"
-#import "AFNetworking.h"
-
-#import "AFNetworkActivityIndicatorManager.h"
-
+#import <AFNetworking.h>
+#import <AFNetworkActivityIndicatorManager.h>
 #import "UIImageView+WebCache.h"
-#import "AFNetworking.h"
-
 #import "DataManager.h"
 
 @interface AppDelegate ()
@@ -29,7 +22,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    //风火轮
     [AFNetworkActivityIndicatorManager sharedManager].enabled = true;
     [[DataManager manager] downNetworking];
     [self.window makeKeyAndVisible];
@@ -39,16 +31,13 @@
     NSString *url= @"http://news-at.zhihu.com/api/4/start-image/1080*1776";
     UIImageView *imageV = [[UIImageView alloc] init];
     imageV.frame = self.window.frame;
-//    [imageV sd_setImageWithURL:[NSURL URLWithString:url]];
     
     [self.launchView addSubview:imageV];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *string = responseObject[@"img"];
-//        dispatch_async(dispatch_get_main_queue(), ^{
-            [imageV sd_setImageWithURL:[NSURL URLWithString:string]];
-//        });
+        [imageV sd_setImageWithURL:[NSURL URLWithString:string]];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
@@ -57,8 +46,6 @@
     [self.window bringSubviewToFront:self.launchView];
     
     [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(removeLaunch) userInfo:nil repeats:NO];
-
-//    [NSThread sleepForTimeInterval:2.0];
 
     return YES;
 }

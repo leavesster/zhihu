@@ -9,7 +9,6 @@
 #import "DataManager.h"
 #import "AFNetworking.h"
 #import <CoreData/CoreData.h>
-
 #import "StoryList+Create.h"
 #import "Story+Create.h"
 
