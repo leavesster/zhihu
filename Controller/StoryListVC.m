@@ -133,34 +133,15 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-//    self.fetchedResultsController = nil;
 }
 
 #pragma mark -properties
 - (void)performFetch
 {
-//    NSLog(@"%s begin",__func__);
-//    if (self.fetchedResultsController) {
-//        if (self.fetchedResultsController.fetchRequest.predicate) {
-//            if (self.debug) NSLog(@"[%@ %@] fetching %@ with predicate: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.fetchedResultsController.fetchRequest.entityName, self.fetchedResultsController.fetchRequest.predicate);
-//        } else {
-//            if (self.debug) NSLog(@"[%@ %@] fetching all %@ (i.e., no predicate)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.fetchedResultsController.fetchRequest.entityName);
-//        }
-//        NSError *error;
-//        BOOL success = [self.fetchedResultsController performFetch:&error];
-//        if (!success) NSLog(@"[%@ %@] performFetch: failed", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-//        if (error) NSLog(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
-//    } else {
-//        if (self.debug) NSLog(@"[%@ %@] no NSFetchedResultsController (yet?)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-//    }
-    
     NSError *error;
     BOOL success = [self.fetchedResultsController performFetch:&error];
     if (!success) NSLog(@"[%@ %@] performFetch: failed", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     if (error) NSLog(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
-
-//    NSLog(@"%s end",__func__);
-//    [self.tableView reloadData];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController{

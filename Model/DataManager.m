@@ -12,7 +12,6 @@
 #import "StoryList+Create.h"
 #import "Story+Create.h"
 
-
 @interface DataManager ()
 
 @end

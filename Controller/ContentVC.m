@@ -9,11 +9,7 @@
 #import "ContentVC.h"
 #import "UIImageView+WebCache.h"
 #import "AFNetworking.h"
-
 #import "DataManager.h"
-
-
-
 
 @interface ContentVC ()<UIScrollViewDelegate>
 
