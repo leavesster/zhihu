@@ -19,4 +19,4 @@ The first demo that two week's job.
 
 ##完善：
 1. 由于网速等原因，数次下载失败,已更改为cocoapods依赖。
-<!--2. 点击喜欢动画特效。-->
+2. 点击喜欢动画特效。
